@@ -1,0 +1,25 @@
+# Variables de entorno (nunca subir credenciales)
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+
+# Frontend (futuro)
+node_modules/
+dist/
+build/
+
+# Editores y sistema operativo
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

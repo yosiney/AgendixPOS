@@ -1,0 +1,18 @@
+# Nunca copiar variables de entorno a la imagen: Docker las recibe desde el entorno.
+.env
+.env.*
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Otros
+.git
+Dockerfile
+.dockerignore
+docker-compose.yml

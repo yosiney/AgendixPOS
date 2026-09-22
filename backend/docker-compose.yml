@@ -1,0 +1,32 @@
+# Entorno de desarrollo del backend. Uso (desde esta carpeta): docker compose up --build
+name: agendixpos
+
+services:
+  backend:
+    build:
+      context: .
+    env_file:
+      - .env
+    environment:
+      # Necesario para que --reload detecte cambios en archivos montados desde Windows/macOS.
+      WATCHFILES_FORCE_POLLING: "true"
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./app:/app/app
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+
+  # MongoDB local (opcional). Para usarlo en lugar de Atlas:
+  #   1. Descomentar este servicio y el volumen de abajo.
+  #   2. En .env usar: MONGODB_URL=mongodb://mongo:27017
+  #   3. Agregar en el servicio backend:  depends_on: [mongo]
+  #
+  # mongo:
+  #   image: mongo:8
+  #   ports:
+  #     - "27017:27017"
+  #   volumes:
+  #     - mongo_data:/data/db
+
+# volumes:
+#   mongo_data:
